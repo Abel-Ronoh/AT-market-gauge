@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login{
+    position: relative;
+    width: 350px;
+    height: 50px;
+    display: flex;
+    background-color: black;
+    padding: 5px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.login:hover{
+    cursor: pointer;
+}
+.login img{
+    width: 50px;
+    height: 50px;
+}
+.button{
+    width: 400px;
+    height: 50px;
+    font-size: larger;
+    /* font-family:; */
+    letter-spacing: 2px;
+    font-weight: 900;
+    color: aliceblue;
+    border: none;
+    text-align: center;
+}

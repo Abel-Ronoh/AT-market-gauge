@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "africastalking": "^0.6.6",
+    "firebase": "^10.8.1",
+    "nodemon": "^3.1.0"
+  },
+  "name": "market-gauge-main",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

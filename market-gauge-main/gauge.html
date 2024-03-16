@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Market Gauge</title>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    
+    <div class="chartCard">
+      <h1 class="heading"> TICK ANALYSER</h1>       
+      <nav>
+        <div>1 minute</div>
+        <div>5 minutes</div>
+        <div>15 minutes</div>
+        <div>30 minutes</div>
+      </nav>
+      <div class="chartBox">
+        <canvas id="myChart">
+          
+        </canvas>
+        <div class="gauge-needle" id="gauge-needle"></div>
+        
+      </div>
+      <div class="texts">
+        <h1 id="ticker-value"></h1>
+        
+      </div>
+      <div class="counters">
+        
+        <div>
+          <h1>SELL</h1>
+          <h2 id="sellCounter">0</h2>
+        </div>
+        <div>
+          <h1>NEUTRAL</h1>
+          <h2 id="holdCounter">0</h2>
+        </div>
+        <div>
+          <h1>BUY</h1>
+          <h2 id="buyCounter">0</h2>
+        </div>
+
+      </div>
+      <footer>
+        <h1>Track All Markets On:</h1>
+        <div class="treck">
+          <div>
+            <img src="./assets/meta4.png" alt="">
+            <h4>Meta Trader <span>4</span></h4>
+          </div>
+          <div>
+            <img src="./assets/meta5.png" alt="">
+            <h4>Meta Trader <span>5</span></h4>
+          </div>
+          <div>
+            <img id="trv" src="./assets/trv.png" alt="">
+          </div>
+        </div>
+      </footer>
+      <!-- <img src="./assets/logo.jpg" id="logo" alt="">  -->
+    </div>
+   
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+    <script src="input.js">
+      const tickerText = document.getElementById("ticker-text");
+const tickerValue = document.getElementById("ticker-value");
+const tickerSymbol = document.getElementById("ticker-symbol");
+const gaugeNeedle = document.getElementById("gauge-needle");
+
+// Simulated data array (replace with your actual data source)
+const data = [
+    { symbol: "AAPL", value: "STRONG BUY" },
+    { symbol: "TSLA", value: "HOLD" },
+    { symbol: "AMZN", value: "SELL" },
+    { symbol: "TSLA", value: "HOLD" },
+    { symbol: "AMZN", value: "SELL" }
+];
+
+let currentDataIndex = 0;
+
+function updateTicker() {
+    const currentData = datas[currentDataIndex];
+    // tickerText.textContent = `${currentData.symbol}`;
+    tickerValue.textContent = currentData.value;
+    
+    // Update gauge based on value
+    gaugeNeedles.classList.remove("buy", "sell", 'strongbuy', "strongsell");
+    if (currentData.value === "STRONG BUY") {
+        tickerValue.style.color = "blue"
+        gaugeNeedles.classList.add("strongbuy");
+        timer = 150000
+        counterBuy +=1
+        buyCounter.textContent = counterBuy
+    } else if (currentData.value === "SELL") {
+        tickerValue.style.color = "red"
+        gaugeNeedles.classList.add("sell");
+        timer = 150000
+        counterSell +=1
+        sellCounter.textContent = counterSell
+    }else if (currentData.value == "HOLD"){
+        tickerValue.style.color = "#5C5C5C"
+        timer = 3000
+        counterHold +=1
+        holdCounter.textContent = counterHold
+    }else if (currentData.value === "BUY") {
+        tickerValue.style.color = "blue"
+        gaugeNeedles.classList.add("buy");
+        timer = 150000
+        counterBuy +=1
+        buyCounter.textContent = counterBuy
+    }else if (currentData.value === "STRONG SELL") {
+        tickerValue.style.color = "red"
+        gaugeNeedles.classList.add("strongsell");
+        timer = 150000
+        counterSell +=1
+        sellCounter.textContent = counterSell
+    }
+  }
+setInterval(updateTicker, 3000); // Update ticker every 3 seconds
+
+updateTicker(); // Initial update
+    </script>
+
+  </body>
+</html>
